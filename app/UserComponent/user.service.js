@@ -1,7 +1,7 @@
-const UserInfo = require("../../models/user.model");
+const User = require("../../models/user.model");
 
 exports.getAllUser = function (req, result) {
-  UserInfo.find(function (error, resultOfQuery) {
+  User.find(function (error, resultOfQuery) {
     if (error) {
       console.log(error);
       result(error, null);
@@ -13,7 +13,7 @@ exports.getAllUser = function (req, result) {
 
 exports.getUserById = function (req, result) {
   let userInfoId = req.params.userInfoId;
-  UserInfo.findById(userInfoId, function (error, resultOfQuery) {
+  User.findById(userInfoId, function (error, resultOfQuery) {
     if (error) {
       result(error, null);
     } else {
@@ -23,7 +23,7 @@ exports.getUserById = function (req, result) {
 };
 
 exports.addUser = function (req, result) {
-  UserInfo.create(req.body, function (error, records) {
+  User.create(req.body, function (error, records) {
     if (error) {
       result(error, null);
     } else {
@@ -36,7 +36,7 @@ exports.addUser = function (req, result) {
 exports.updateUser = function (req, result) {
   let userInfoId = req.body.userInfoId;
   delete req.body.userInfoId;
-  UserInfo.findByIdAndUpdate(userInfoId, req.body, function (error, records) {
+  User.findByIdAndUpdate(userInfoId, req.body, function (error, records) {
     if (error) {
       console.log(error);
       result(error, null);
@@ -50,7 +50,7 @@ exports.updateUser = function (req, result) {
 exports.deleteUserById = function (req, result) {
   let userInfoId = req.params.userInfoId;
 
-  UserInfo.remove( {_id : userInfoId }, function (error, records) {
+  User.remove( {_id : userInfoId }, function (error, records) {
     if (error) {
         result(error, null);
     } else {
