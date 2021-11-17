@@ -1,8 +1,8 @@
 // Connection URL
-const url = 'mongodb://localhost:27017/';
+const url = 'mongodb://mongodb:27017/';
 
 // Database Name
-const dbName = 'TEST';
+const dbName = 'test';
 
 const dbUrl = url+dbName;
 module.exports = dbUrl;
